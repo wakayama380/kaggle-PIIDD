@@ -52,7 +52,15 @@
 <p>Model2: deberta-v3-large+lstm (cv/public/private → 0.965/0.972/0.955), max_len=512, stride=128. Dataset: nbroad.</p>
 <p>Model3: deberta-v3-large (cv/public/private → 0.973/0.967/0.969), max_len=512, stride=128. Dataset: nbroad. Weight of non-'O' losses increased by 5 times.</p>
 <p>Model4: deberta-v3-large (cv/public/private → 0.970/?/?), max_len=1024, stride=256. Dataset: nbroad. Add lstm layer following deberta-v3-large. Weight of non-'O' losses increased by 5 times. (This model was not used in the selected private best model.)</p>
-<p>Common for all models: B- and I- tags are not used. Basic rule-based processing: NAME_STUDENT: Rejects if not starting with a capital letter followed by lowercase letters. If one character, remove. URL and EMAIL formats must be adhered to, or they are rejected. Strict rule-based processing: If an article precedes the prediction of NAME_STUDENT, it is removed unless "'s" follows, in which case it is not removed. Examples: - Articles ('The', ' the', 'a', 'and') often precede non-name terms. If 'at' is before, it's likely a location and is excluded. However, there are exceptions when followed by "'s" as it may not fit the rules as intended: ~ the Takai's house ~. In such cases, the rule is not applied. This is a personal observation, but I am surprised to see that the scores (0.969) achieved with a single model, either similar to or higher than those obtained by ensemble methods combining CV and public LB scores. Does this suggest that the labels already detectable by a single model are achievable, while others pose more difficulty for machine learning models to detect?</p>
+
+
+<p>Common for all models: B- and I- tags are not used. Basic rule-based processing: NAME_STUDENT: Rejects if not starting with a capital letter followed by lowercase letters. If one character, remove. URL and EMAIL formats must be adhered to, or they are rejected.</p>
+
+<p>Strict rule-based processing:</p>
+<p>If an article precedes the prediction of NAME_STUDENT, it is removed unless "'s" follows, in which case it is not removed.</p> 
+
+<p>Examples: - Articles ('The', ' the', 'a', 'and') often precede non-name terms. If 'at' is before, it's likely a location and is excluded. However, there are exceptions when followed by "'s" as it may not fit the rules as intended:</p> 
+<p>~ the Takai's house ~. In such cases, the rule is not applied. </p>
 
 <h2>Minfuka Part</h2>
 <p>Common for all models: Base-Model: deberta-v3-large (Freezing embeddings, Freezing first 6 layers), max_len=1536. Datasets: training_data: competition training data (4/5) + external data, validation_data: competition training data (1/5).</p>
